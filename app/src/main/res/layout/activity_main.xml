@@ -29,24 +29,16 @@
             android:orientation="vertical"
             android:padding="10dp">
 
-            <TextView
-                android:id="@+id/LoginPage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Login Page"
-                android:textAlignment="center"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="114dp"
-                android:layout_height="119dp"
+                android:layout_width="170dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="40dp"
                 app:srcCompat="@drawable/logo" />
 
             <EditText
                 android:id="@+id/editTextTextEmailAddress"
-                android:layout_width="match_parent"
+                android:layout_width="310dp"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/email"
                 android:drawablePadding="5dp"
@@ -56,7 +48,7 @@
 
             <EditText
                 android:id="@+id/editTextTextPassword2"
-                android:layout_width="match_parent"
+                android:layout_width="310dp"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/password"
                 android:drawablePadding="5dp"
@@ -67,14 +59,15 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="192dp"
                 android:layout_height="50dp"
-                app:cardBackgroundColor="#4CAF50"
+                android:layout_marginTop="30dp"
+                app:cardBackgroundColor="#8DD390"
                 app:cardCornerRadius="20dp">
 
                 <TextView
                     android:id="@+id/buttonsignin"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#40AE44"
+                    android:background="#8DD390"
                     android:gravity="center"
                     android:text="Sign In"
                     android:textAlignment="center"
