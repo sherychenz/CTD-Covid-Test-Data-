@@ -64,7 +64,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="41dp"
                     android:gravity="center|center_horizontal"
-                    android:text="Rregister Test Center"
+                    android:text="Register Test Center"
                     android:textStyle="bold" />
             </LinearLayout>
 
