@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainMenuActivity extends AppCompatActivity {
+public class TestCenterManagerMenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_test_center_menu);
+        setContentView(R.layout.activity_test_center_manager_menu);
     }
 }
