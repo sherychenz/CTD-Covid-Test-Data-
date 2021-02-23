@@ -133,8 +133,8 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="259dp"
-            android:layout_height="82dp"
+            android:layout_width="190dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             app:cardBackgroundColor="#FAF6F6"

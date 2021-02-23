@@ -57,17 +57,17 @@
                 android:inputType="textPassword" />
 
             <androidx.cardview.widget.CardView
-                android:layout_width="192dp"
+                android:layout_width="190dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="30dp"
-                app:cardBackgroundColor="#8DD390"
+                app:cardBackgroundColor="#5FAC60"
                 app:cardCornerRadius="20dp">
 
                 <TextView
                     android:id="@+id/buttonsignin"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#8DD390"
+                    android:background="#5FAC60"
                     android:gravity="center"
                     android:text="Sign In"
                     android:textAlignment="center"
