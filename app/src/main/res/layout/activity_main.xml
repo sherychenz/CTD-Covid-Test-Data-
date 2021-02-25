@@ -37,14 +37,15 @@
                 app:srcCompat="@drawable/logo" />
 
             <EditText
-                android:id="@+id/editTextTextEmailAddress"
+                android:id="@+id/editTextTextPersonName4"
                 android:layout_width="310dp"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/email"
+                android:layout_height="41dp"
+                android:drawableLeft="@drawable/username"
                 android:drawablePadding="5dp"
                 android:ems="10"
-                android:hint="Email"
-                android:inputType="textEmailAddress" />
+                android:hint="Username"
+                android:inputType="textPersonName"
+                android:padding="5dp" />
 
             <EditText
                 android:id="@+id/editTextTextPassword2"
