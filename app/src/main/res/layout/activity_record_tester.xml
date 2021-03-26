@@ -42,13 +42,6 @@
                 android:textAlignment="center"
                 android:textSize="20sp" />
 
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:autofillHints="Test Center"
-                android:padding="15dp" />
-
             <EditText
                 android:id="@+id/editTextTextPersonName2"
                 android:layout_width="match_parent"
