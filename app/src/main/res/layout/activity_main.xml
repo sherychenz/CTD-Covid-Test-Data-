@@ -68,12 +68,22 @@
                     android:id="@+id/buttonsignin"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
                     android:background="#5FAC60"
+                    android:drawablePadding="10dp"
                     android:gravity="center"
                     android:text="Sign In"
                     android:textAlignment="center"
                     android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:drawablePadding="10dp"
+                android:text="Register Centre? Sign up" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

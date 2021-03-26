@@ -76,6 +76,24 @@
                 android:inputType="textPostalAddress"
                 android:padding="15dp" />
 
+            <EditText
+                android:id="@+id/editTextTextPersonName7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Manager Username"
+                android:inputType="textPersonName"
+                android:padding="15dp" />
+
+            <EditText
+                android:id="@+id/editTextTextPassword3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="15dp" />
+
             <androidx.cardview.widget.CardView
                 android:layout_width="190dp"
                 android:layout_height="50dp"
