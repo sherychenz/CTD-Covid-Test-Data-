@@ -37,7 +37,7 @@
                 app:srcCompat="@drawable/logo" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName4"
+                android:id="@+id/UserName"
                 android:layout_width="310dp"
                 android:layout_height="41dp"
                 android:drawableLeft="@drawable/username"
@@ -48,7 +48,7 @@
                 android:padding="5dp" />
 
             <EditText
-                android:id="@+id/editTextTextPassword2"
+                android:id="@+id/Password"
                 android:layout_width="310dp"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/password"

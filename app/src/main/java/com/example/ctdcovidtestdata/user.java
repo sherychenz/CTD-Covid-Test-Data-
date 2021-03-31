@@ -1,6 +1,7 @@
 package com.example.ctdcovidtestdata;
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -20,8 +21,61 @@ import java.util.Map;
 
 public class user {
 
-    private static final String URL = "";
-    private static final String URL_REGISTER = "";
+    private static final String URL = "https://ctd5758.000webhostapp.com/logIn.php";
+    private static final String URL_REGISTER = "https://ctd5758.000webhostapp.com/register.php";
+    private String ID;
+    private String UserName;
+    private String Name;
+    private String Phone;
+    private String Address;
+    private String Email;
+    private String Password;
+    private Context context;
+
+    public user(){
+    }
+
+    public user(String ID, String UserName, String Name, String Phone, String Address, String Email, String Password){
+        this.ID = ID;
+        this.UserName = UserName;
+        this.Name = Name;
+        this.Phone = Phone;
+        this.Address = Address;
+        this.Email = Email;
+        this.Password = Password;
+    }
+
+    public String getID() { return ID; }
+
+    public void setID(String ID) { this.ID = ID; }
+
+    public String getUserName() { return UserName; }
+
+    public void setUserName(String userName) { UserName = userName; }
+
+    public String getName() { return Name; }
+
+    public void setName(String name) { Name = name; }
+
+    public String getPhone() { return Phone; }
+
+    public void setPhone(String phone) { Phone = phone; }
+
+    public String getAddress() { return Address; }
+
+    public void setAddress(String address) { Address = address; }
+
+    public String getEmail() { return Email; }
+
+    public void setEmail(String email) { Email = email; }
+
+    public String getPassword() { return Password; }
+
+    public void setPassword(String password) { Password = password; }
+
+    public Context getContext() { return context; }
+
+    public void setContext(Context context) { this.context = context; }
 
     public void login(final Context context, final String userName, final String password){
         if (!userName.isEmpty() && !password.isEmpty()){
@@ -39,13 +93,8 @@ public class user {
                                     for(int i=0; i < jsonArray.length();i++){
                                         JSONObject object = jsonArray.getJSONObject(i);
                                         if (object.get("position").equals("Manager")){
-//                                            if(object.get(status).equals("p")){
-//                                                Toast.makeText(context,"Login Success! Welcomed", Toast.LENGTH_LONG).show();
-//                                            }
-//                                            else {
-//                                                Toast.makeText(context, "Login Success! Welcome 2", Toast.LENGTH_LONG).show();
-//                                            }
-//                                            Toast.makeText(context, "Login Success! Welcome", Toast.LENGTH_LONG).show();
+                                            Intent intent = new Intent(context,TestCenterManagerMenuActivity.class);
+                                            context.startActivity(intent);
                                         }
                                         else if (false){
                                             Toast.makeText(context, "Login Success! Welcome 4", Toast.LENGTH_LONG).show();
