@@ -10,16 +10,17 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
 
+
+
+
 public class user {
 
-    private static final String URL_REGISTER = ;
+    private static final String URL_REGISTER = "https://ctd5758.000webhostapp.com/register.php";
 
     public void register(Context context , String name, String phone, String email, String address, String username, String password){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGISTER,
