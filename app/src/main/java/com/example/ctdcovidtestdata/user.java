@@ -90,10 +90,13 @@ public class user {
                                 JSONArray jsonArray = jsonObject.getJSONArray("login");
 
                                 if(success.equals("1")){
+
                                     for(int i=0; i < jsonArray.length();i++){
                                         JSONObject object = jsonArray.getJSONObject(i);
-                                        if (object.get("position").equals("Manager")){
+
+                                        if (object.get("Position").equals("Manager")){
                                             Intent intent = new Intent(context,TestCenterManagerMenuActivity.class);
+                                            intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                                             context.startActivity(intent);
                                         }
                                         else if (false){
