@@ -1,6 +1,7 @@
 package com.example.ctdcovidtestdata;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,5 +23,18 @@ public class RegisterCenterMenuActivity extends AppCompatActivity {
         PhoneText           = findViewById(R.id.Phone);
         AddressText         = findViewById(R.id.Address);
         PasswordText        = findViewById(R.id.Password);
+    }
+
+
+    public void Register(View view) {
+        UserName = UserNameText.getText().toString().trim();
+        Name = NameText.getText().toString().trim();
+        Email = EmailText.getText().toString().trim();
+        Phone = PhoneText.getText().toString().trim();
+        Address = AddressText.getText().toString().trim();
+        Password = PasswordText.getText().toString().trim();
+
+        user.register(getApplicationContext(), Name, Phone, Email, Address, UserName, Password);
+
     }
 }
