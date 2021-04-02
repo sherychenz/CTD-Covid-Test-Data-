@@ -82,6 +82,9 @@ public class user {
 
     public void login(final Context context, final String userName, final String password){
         if (!userName.isEmpty() && !password.isEmpty()){
+            System.out.println(userName);
+            System.out.println(password);
+
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
                     new Response.Listener<String>(){
                         @Override
@@ -103,24 +106,24 @@ public class user {
                                             context.startActivity(intent);
                                         }
                                         else if (false){
-                                            Toast.makeText(context, "Login Success! Welcome 4", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(context, "Login Success! Welcome", Toast.LENGTH_LONG).show();
                                         }
                                         else{
-                                            Toast.makeText(context, "Login Success! Welcome 5", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(context, "Wait until the admin approved", Toast.LENGTH_LONG).show();
                                         }
                                     }
                                 }
                             }
                             catch (JSONException x){
                                 x.printStackTrace();
-                                Toast.makeText(context, "Invalid Username or Password 1", Toast.LENGTH_LONG).show();
+                                Toast.makeText(context, "Invalid Username or Password", Toast.LENGTH_LONG).show();
                             }
                         }
                     },
                     new Response.ErrorListener(){
                         @Override
                         public void onErrorResponse(VolleyError error){
-                            Toast.makeText(context, "Invalid Username or Password 2", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "Error", Toast.LENGTH_LONG).show();
                         }
                     }){
                 @Override
@@ -153,6 +156,12 @@ public class user {
                         System.out.println(response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
+                            Toast.makeText(context, "Register Success", Toast.LENGTH_LONG).show();
+
+                            Intent intent = new Intent(context, MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(intent);
+
                     } catch (JSONException e){
                             e.printStackTrace();
                             Toast.makeText(context, "Invalid Username or Password", Toast.LENGTH_SHORT).show();

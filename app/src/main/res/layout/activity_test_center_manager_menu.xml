@@ -44,6 +44,7 @@
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
+            android:onClick="RecordTester"
             android:paddingTop="30dp"
             app:cardCornerRadius="25dp">
 
@@ -77,6 +78,7 @@
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
+            android:onClick="ManageTestkit"
             app:cardCornerRadius="25dp">
 
             <LinearLayout
