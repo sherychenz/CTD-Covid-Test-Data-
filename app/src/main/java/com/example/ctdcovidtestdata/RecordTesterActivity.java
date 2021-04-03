@@ -33,7 +33,7 @@ public class RecordTesterActivity extends AppCompatActivity {
         Address = AddressText.getText().toString().trim();
         Password = PasswordText.getText().toString().trim();
 
-        user.register(getApplicationContext(), Name, Phone, Address, UserName, Password);
+        user.recordTester(getApplicationContext(), Name, Phone, Address, UserName, Password);
     }
 
     public void BackMenu(View view) {

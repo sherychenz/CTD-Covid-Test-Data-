@@ -44,7 +44,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/Name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -62,7 +62,7 @@
                 android:padding="15dp" />
 
             <EditText
-                android:id="@+id/editTextTextPostalAddress2"
+                android:id="@+id/Address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -71,7 +71,7 @@
                 android:padding="15dp" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName6"
+                android:id="@+id/UserName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -85,7 +85,7 @@
                 app:passwordToggleEnabled="true">
 
                 <EditText
-                    android:id="@+id/editTextTextPassword"
+                    android:id="@+id/Password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:drawable/edit_text"
