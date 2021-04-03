@@ -26,6 +26,7 @@ public class user {
 
     private static final String URL = "https://ctd5758.000webhostapp.com/logIn.php";
     private static final String URL_REGISTER = "https://ctd5758.000webhostapp.com/register.php";
+    private static final String URL_RECORD_TESTER = "https://ctd5758.000webhostapp.com/recordtester.php";
     private String ID;
     private String UserName;
     private String Name;
@@ -188,5 +189,46 @@ public class user {
     };
     RequestQueue requestQueue = Volley.newRequestQueue(context);
     requestQueue.add(stringRequest);
+    }
+
+    public void recordTester(Context context , String name, String phone, String address, String username, String password){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_RECORD_TESTER,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println(response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            Toast.makeText(context, "Register Success", Toast.LENGTH_LONG).show();
+
+                            Intent intent = new Intent(context, MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(intent);
+
+                        } catch (JSONException e){
+                            e.printStackTrace();
+                            Toast.makeText(context, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError{
+                Map<String, String> params = new HashMap<>();
+                params.put("username", username);
+                params.put("name", name);
+                params.put("phone", phone);
+                params.put("address", address);
+                params.put("password", password);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
     }
 }
