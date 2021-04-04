@@ -33,11 +33,6 @@ public class NewTestKitActivity extends AppCompatActivity {
         TestKitName = TestKitNameText.getText().toString().trim();
         Stock = StockText.getText().toString().trim();
 
-        System.out.println(TestKitName + " -----------------------------------");
         testkit.addNewTestKit(getApplicationContext(), TestKitName, Stock);
-
-        Intent intent = new Intent(getApplicationContext(), ManageTestKitStockActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
     }
 }

@@ -22,6 +22,7 @@ import java.util.Map;
 public class testkit {
 
     private static final String URL_testkitname = "https://ctd5758.000webhostapp.com/testkitname.php";
+    private static final String URL_stockupdate = "https://ctd5758.000webhostapp.com/stockupdate.php";
 
     private String ID;
     private String TestKitName;
@@ -62,7 +63,7 @@ public class testkit {
                             JSONObject jsonObject = new JSONObject(response);
                             Toast.makeText(context, "Added Success", Toast.LENGTH_LONG).show();
 
-                            Intent intent = new Intent(context, MainActivity.class);
+                            Intent intent = new Intent(context, ManageTestKitStockActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             context.startActivity(intent);
 
@@ -84,6 +85,43 @@ public class testkit {
                 params.put("testkitname", testKitName);
                 params.put("stock", Stock);
 
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+    }
+
+    public void UpdateStock(Context context , String stock){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_stockupdate,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println(response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            Toast.makeText(context, "Success Change", Toast.LENGTH_LONG).show();
+
+                            Intent intent = new Intent(context, MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(intent);
+
+                        } catch (JSONException e){
+                            e.printStackTrace();
+                            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError{
+                Map<String, String> params = new HashMap<>();
+                params.put("stock", stock);
                 return params;
             }
         };
