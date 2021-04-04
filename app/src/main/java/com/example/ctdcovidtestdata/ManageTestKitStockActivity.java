@@ -19,4 +19,10 @@ public class ManageTestKitStockActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
+
+    public void AddNewKkit(View view) {
+        Intent intent = new Intent(getApplicationContext(), NewTestKitActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 }
