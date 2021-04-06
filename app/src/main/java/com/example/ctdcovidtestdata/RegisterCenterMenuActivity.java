@@ -34,7 +34,29 @@ public class RegisterCenterMenuActivity extends AppCompatActivity {
         Address = AddressText.getText().toString().trim();
         Password = PasswordText.getText().toString().trim();
 
-        user.register(getApplicationContext(), Name, Phone, Email, Address, UserName, Password);
+
+        if (UserName.isEmpty() && Name.isEmpty() && Email.isEmpty() && Phone.isEmpty() && Address.isEmpty() && Password.isEmpty()){
+            UserNameText.setError("Can't be Empty");
+            NameText.setError("Can't be Empty");
+            EmailText.setError("Can't be Empty");
+            PhoneText.setError("Can't be Empty");
+            AddressText.setError("Can't be Empty");
+            PasswordText.setError("Can't be Empty");
+        }else  if(UserName.isEmpty()){
+            UserNameText.setError("Can't be Empty");
+        }else  if(Name.isEmpty()){
+            NameText.setError("Can't be Empty");
+        }else  if(Email.isEmpty()){
+            EmailText.setError("Can't be Empty");
+        }else  if(Phone.isEmpty()){
+            PhoneText.setError("Can't be Empty");
+        }else  if(Address.isEmpty()){
+            AddressText.setError("Can't be Empty");
+        }else if (Password.isEmpty()){
+            PasswordText.setError("Can't be Empty");
+        }else{
+            user.register(getApplicationContext(), Name, Phone, Email, Address, UserName, Password);
+        }
 
     }
 }

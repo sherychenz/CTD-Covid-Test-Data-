@@ -30,6 +30,7 @@ public class ManageTestKitStockActivity extends AppCompatActivity {
     private static final String URL_testkitdata = "https://ctd5758.000webhostapp.com/testkitdata.php";
     private EditText Stock;
     private String updatestock;
+    private String testKitID;
 
     ArrayList<String>TestKit;
 
@@ -108,6 +109,7 @@ public class ManageTestKitStockActivity extends AppCompatActivity {
                                 if (value.equals(testkitobject.getString("TestKitName"))){
                                     testKitName.setText(testkitobject.getString("TestKitName"));
                                     testKitStock.setText(testkitobject.getString("Stock"));
+                                    testKitID = testkitobject.getString("ID");
                                 }
                             }
                         } catch (JSONException e) {
@@ -177,6 +179,8 @@ public class ManageTestKitStockActivity extends AppCompatActivity {
 
         testkit testkit = new testkit();
 
-        testkit.UpdateStock(getApplicationContext(), updatestock);
+        System.out.println("-------------> " + testKitID);
+
+        testkit.UpdateStock(getApplicationContext(), updatestock, testKitID);
     }
 }
