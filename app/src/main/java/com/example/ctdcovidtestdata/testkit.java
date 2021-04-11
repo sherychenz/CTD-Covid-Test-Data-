@@ -92,7 +92,8 @@ public class testkit {
         requestQueue.add(stringRequest);
     }
 
-    public void UpdateStock(Context context , String stock){
+
+    public void UpdateStock(Context context , String stock, String ID){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_stockupdate,
                 new Response.Listener<String>() {
                     @Override
@@ -101,8 +102,7 @@ public class testkit {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             Toast.makeText(context, "Success Change", Toast.LENGTH_LONG).show();
-
-                            Intent intent = new Intent(context, MainActivity.class);
+                            Intent intent = new Intent(context, ManageTestKitStockActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             context.startActivity(intent);
 
@@ -121,6 +121,7 @@ public class testkit {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError{
                 Map<String, String> params = new HashMap<>();
+                params.put("id", ID);
                 params.put("stock", stock);
                 return params;
             }
@@ -128,5 +129,4 @@ public class testkit {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
     }
-
 }

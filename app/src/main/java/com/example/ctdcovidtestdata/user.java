@@ -28,7 +28,7 @@ public class user {
     private static final String URL_REGISTER = "https://ctd5758.000webhostapp.com/register.php";
     private static final String URL_TESTCENTRE = "https://ctd5758.000webhostapp.com/testcentreregis.php";
     private static final String URL_RECORD_TESTER = "https://ctd5758.000webhostapp.com/recordtester.php";
-    private static final String URL_TESTCENTRE_DATA = "ctd5758.000webhostapp.com/CentreData.php";
+    private static final String URL_TESTCENTRE_DATA = "https://ctd5758.000webhostapp.com/CentreData.php";
     private static final String URL_UPDATE_MANAGER = "ctd5758.000webhostapp.com/testcentreupdate.php";
     private static final String URL_MANAGER_DATA = "ctd5758.000webhostapp.com/userdata.php";
 
@@ -107,9 +107,13 @@ public class user {
                                         JSONObject object = jsonArray.getJSONObject(i);
 
                                         if (object.get("Position").equals("Manager")){
-                                            Intent intent = new Intent(context,TestCenterManagerMenuActivity.class);
-                                            intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-                                            context.startActivity(intent);
+                                            if (object.get("Status").equals("x")){
+                                                Toast.makeText(context, "Wait until the admin approved", Toast.LENGTH_LONG).show();
+                                            }else{
+                                                Intent intent = new Intent(context,TestCenterManagerMenuActivity.class);
+                                                intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+                                                context.startActivity(intent);
+                                            }
                                         }
                                         else if (false){
                                             Toast.makeText(context, "Login Success! Welcome", Toast.LENGTH_LONG).show();
@@ -139,12 +143,6 @@ public class user {
                     params.put("password", password);
                     return params;
                 }
-//                protected Map<String, String> getParams() throw AuthFailureError{
-//                    Map<String, String> params = new HashMap<>();
-//                    params.put("userName", userName);
-//                    params.put("password", password);
-//                    return params;
-//                }
             };
             RequestQueue requestQueue = Volley.newRequestQueue(context);
             requestQueue.add(stringRequest);
@@ -166,6 +164,7 @@ public class user {
 
                             //testCenterManager(context, name, phone,email,address,username,password);
                             managerData(context,username,name);
+                            //managerData(context,username,name);
 
                         } catch (JSONException e){
                             e.printStackTrace();
@@ -182,13 +181,48 @@ public class user {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError{
                 Map<String, String> params = new HashMap<>();
-                params.put("testcentrename", name);
+                params.put("testcentrename",name );
                 return params;
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
 
+        StringRequest stringRequest2 = new StringRequest(Request.Method.GET, URL_TESTCENTRE_DATA,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("manager data -> " + response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONArray userArray = jsonObject.getJSONArray("Testcentre");
+                            for (int i = 0; i < userArray.length(); i++){
+                                JSONObject userObj = userArray.getJSONObject(i);
+                                if (name.equals(userObj.getString("TestCentreName"))){
+                                    //getTestCenter(context,name,userObj.getString("ID"));
+                                    registerTestManager(context,name,phone,email,address,username,password,userObj.getString("ID"));
+                                }
+
+                            }
+                        } catch (JSONException e){
+                            e.printStackTrace();
+                            Toast.makeText(context, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                }
+        );
+        RequestQueue requestQueue2 = Volley.newRequestQueue(context);
+        requestQueue2.add(stringRequest2);
+
+//
+    }
+
+    public void registerTestManager(Context context , String name, String phone, String email, String address, String username, String password, String testcentreID){
         StringRequest stringRequest1 = new StringRequest(Request.Method.POST, URL_REGISTER,
                 new Response.Listener<String>() {
                     @Override
@@ -218,108 +252,12 @@ public class user {
             protected Map<String, String> getParams() throws AuthFailureError{
                 Map<String, String> params = new HashMap<>();
                 params.put("username", username);
+                params.put("testCentreID", testcentreID);
                 params.put("name", name);
                 params.put("phone", phone);
                 params.put("address", address);
                 params.put("email", email);
                 params.put("password", password);
-                return params;
-            }
-        };
-        RequestQueue requestQueue1 = Volley.newRequestQueue(context);
-        requestQueue1.add(stringRequest1);
-    }
-
-    public void getTestCenter(Context context , String name, String managerID){
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_TESTCENTRE_DATA,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        System.out.println(response);
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            JSONArray testCentreArray = jsonObject.getJSONArray("Testcebtre");
-                            for (int i = 0; i < testCentreArray.length(); i++){
-                                JSONObject testCentreObj = testCentreArray.getJSONObject(i);
-                                if (testCentreObj.getString("TestCemtreName").equals(name)){
-                                    managerUpdate(context,testCentreObj.getString("ID"),managerID);
-                                }
-                            }
-                        } catch (JSONException e){
-                            e.printStackTrace();
-                            Toast.makeText(context, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                    }
-                }
-        );
-    }
-
-    public void managerData(Context context, String managerName, String name){
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_MANAGER_DATA,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        System.out.println(response);
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            JSONArray userArray = jsonObject.getJSONArray("UserData");
-                            for (int i = 0; i < userArray.length(); i++){
-                                JSONObject userObj = userArray.getJSONObject(i);
-                                if (managerName.equals(userObj.getString("UserName"))){
-                                    getTestCenter(context,name,userObj.getString("ID"));
-                                }
-
-                            }
-                        } catch (JSONException e){
-                            e.printStackTrace();
-                            Toast.makeText(context, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                    }
-                }
-        );
-    }
-
-    public void managerUpdate(Context context , String testCenterID, String managerID){
-                    StringRequest stringRequest1 = new StringRequest(Request.Method.POST, URL_UPDATE_MANAGER,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            System.out.println(response);
-                            try {
-                                JSONObject jsonObject = new JSONObject(response);
-                                Toast.makeText(context, "Register Success", Toast.LENGTH_LONG).show();
-
-                                Intent intent = new Intent(context, MainActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                context.startActivity(intent);
-
-                        } catch (JSONException e){
-                                e.printStackTrace();
-                                Toast.makeText(context, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
-                            }
-                         }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                        }
-                    }
-            ) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError{
-                Map<String, String> params = new HashMap<>();
-                params.put("ID", managerID);
-                params.put("testcentreid", testCenterID);
                 return params;
             }
         };
@@ -337,7 +275,7 @@ public class user {
                             JSONObject jsonObject = new JSONObject(response);
                             Toast.makeText(context, "Register Success", Toast.LENGTH_LONG).show();
 
-                            Intent intent = new Intent(context, MainActivity.class);
+                            Intent intent = new Intent(context, TestCenterManagerMenuActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             context.startActivity(intent);
 
