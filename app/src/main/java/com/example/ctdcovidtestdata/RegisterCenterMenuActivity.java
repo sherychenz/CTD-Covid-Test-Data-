@@ -1,5 +1,6 @@
 package com.example.ctdcovidtestdata;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -58,5 +59,10 @@ public class RegisterCenterMenuActivity extends AppCompatActivity {
             user.register(getApplicationContext(), Name, Phone, Email, Address, UserName, Password);
         }
 
+    }
+
+    public void Login(View view) {
+        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(intent);
     }
 }

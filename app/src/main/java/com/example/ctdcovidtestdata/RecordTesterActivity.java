@@ -33,7 +33,25 @@ public class RecordTesterActivity extends AppCompatActivity {
         Address = AddressText.getText().toString().trim();
         Password = PasswordText.getText().toString().trim();
 
-        user.recordTester(getApplicationContext(), Name, Phone, Address, UserName, Password);
+        if (UserName.isEmpty() && Name.isEmpty() &&  Phone.isEmpty() && Address.isEmpty() && Password.isEmpty()){
+            UserNameText.setError("Can't be Empty");
+            NameText.setError("Can't be Empty");
+            PhoneText.setError("Can't be Empty");
+            AddressText.setError("Can't be Empty");
+            PasswordText.setError("Can't be Empty");
+        }else  if(UserName.isEmpty()){
+            UserNameText.setError("Can't be Empty");
+        }else  if(Name.isEmpty()){
+            NameText.setError("Can't be Empty");
+        }else  if(Phone.isEmpty()){
+            PhoneText.setError("Can't be Empty");
+        }else  if(Address.isEmpty()){
+            AddressText.setError("Can't be Empty");
+        }else if (Password.isEmpty()){
+            PasswordText.setError("Can't be Empty");
+        }else{
+            user.recordTester(getApplicationContext(), Name, Phone, Address, UserName, Password);
+        }
 
     }
 

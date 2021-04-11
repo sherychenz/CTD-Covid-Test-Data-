@@ -97,7 +97,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:onClick="UpdateStock"
-                    android:text="Add"
+                    android:text="Update"
                     android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
 

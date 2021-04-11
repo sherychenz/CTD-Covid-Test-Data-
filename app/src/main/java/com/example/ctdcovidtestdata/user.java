@@ -274,7 +274,7 @@ public class user {
                             JSONObject jsonObject = new JSONObject(response);
                             Toast.makeText(context, "Register Success", Toast.LENGTH_LONG).show();
 
-                            Intent intent = new Intent(context, MainActivity.class);
+                            Intent intent = new Intent(context, TestCenterManagerMenuActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             context.startActivity(intent);
 

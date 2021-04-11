@@ -33,6 +33,15 @@ public class NewTestKitActivity extends AppCompatActivity {
         TestKitName = TestKitNameText.getText().toString().trim();
         Stock = StockText.getText().toString().trim();
 
-        testkit.addNewTestKit(getApplicationContext(), TestKitName, Stock);
+        if (TestKitName.isEmpty() && Stock.isEmpty()){
+            TestKitNameText.setError("Can't be Empty");
+            StockText.setError("Can't be Empty");
+        }else  if(TestKitName.isEmpty()){
+            TestKitNameText.setError("Can't be Empty");
+        }else  if(Stock.isEmpty()){
+            StockText.setError("Can't be Empty");
+        }else{
+            testkit.addNewTestKit(getApplicationContext(), TestKitName, Stock);
+        }
     }
 }

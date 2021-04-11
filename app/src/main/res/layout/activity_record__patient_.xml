@@ -5,52 +5,78 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".RegisterCenterMenuActivity">
+    tools:context=".Record_Patient_Activity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         app:cardCornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#FFFFFF"
             android:orientation="vertical"
             android:paddingBottom="20dp">
 
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="77dp"
                 app:srcCompat="@drawable/logo" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Register Test Center"
+                android:layout_marginBottom="20dp"
+                android:text="Record Patient"
                 android:textAlignment="center"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/Name"
+                android:id="@+id/editTextDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Test Center Name"
+                android:hint="Test Date"
+                android:inputType="date"
+                android:padding="15dp" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp" />
+
+            <EditText
+                android:id="@+id/NameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Patient Name"
                 android:inputType="textPersonName"
                 android:padding="15dp" />
 
             <EditText
-                android:id="@+id/Phone"
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Symptoms"
+                android:inputType="textPersonName"
+                android:padding="15dp" />
+
+            <EditText
+                android:id="@+id/PhoneText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -59,16 +85,7 @@
                 android:padding="15dp" />
 
             <EditText
-                android:id="@+id/Email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="E-Mail"
-                android:inputType="textEmailAddress"
-                android:padding="15dp" />
-
-            <EditText
-                android:id="@+id/Address"
+                android:id="@+id/AddressText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -77,26 +94,26 @@
                 android:padding="15dp" />
 
             <EditText
-                android:id="@+id/UserName"
+                android:id="@+id/UserNameText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Manager Username"
+                android:hint="Username"
                 android:inputType="textPersonName"
                 android:padding="15dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Password"
+                android:layout_height="52dp"
                 app:passwordToggleEnabled="true">
 
                 <EditText
-                    android:id="@+id/Password"
+                    android:id="@+id/PasswordText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:drawable/edit_text"
                     android:ems="10"
+                    android:hint="Password"
                     android:inputType="textPassword"
                     android:padding="15dp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -105,32 +122,18 @@
                 android:layout_width="190dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 app:cardBackgroundColor="#5FAC60"
                 app:cardCornerRadius="25dp">
 
                 <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="189dp"
-                    android:layout_height="49dp"
-                    android:layout_marginBottom="15dp"
-                    android:drawablePadding="15dp"
+                    android:id="@+id/textView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:gravity="center"
-                    android:onClick="Register"
                     android:text="Register"
-                    android:textAlignment="center"
                     android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:onClick="Login"
-                android:paddingLeft="15dp"
-                android:text="Already have account ! Sign In" />
-
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
