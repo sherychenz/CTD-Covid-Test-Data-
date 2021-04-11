@@ -43,8 +43,7 @@
             android:layout_width="370dp"
             android:layout_height="110dp"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="20dp"
             android:onClick="RecordTester"
             android:paddingTop="30dp"
             app:cardCornerRadius="25dp">
@@ -78,7 +77,7 @@
             android:layout_width="370dp"
             android:layout_height="110dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="20dp"
             android:onClick="ManageTestkit"
             app:cardCornerRadius="25dp">
 
@@ -107,6 +106,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+<<<<<<< HEAD
             android:layout_width="370dp"
             android:layout_height="110dp"
             android:layout_gravity="center"
@@ -136,6 +136,8 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+=======
+>>>>>>> parent of cffd175 (Merge remote-tracking branch 'upstream/main' into main)
             android:layout_width="190dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
