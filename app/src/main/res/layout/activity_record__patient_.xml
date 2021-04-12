@@ -42,15 +42,6 @@
                 android:textAlignment="center"
                 android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/editTextDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Test Date"
-                android:inputType="date"
-                android:padding="15dp" />
-
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="match_parent"
