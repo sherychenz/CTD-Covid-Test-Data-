@@ -26,7 +26,8 @@
                 android:layout_height="82dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/logo" />
+                app:srcCompat="@drawable/logo"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:id="@+id/textView26"
