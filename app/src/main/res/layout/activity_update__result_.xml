@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
+    android:padding="10dp"
     tools:context=".Update_Result_Activity">
 
     <androidx.cardview.widget.CardView
@@ -45,16 +46,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingStart="15dp">
+                android:padding="10dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Patient Type" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="TextView" />
@@ -65,16 +66,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingStart="15dp">
+                android:padding="10dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Patient  Name" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="TextView" />
@@ -84,18 +85,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingStart="15dp">
+                android:padding="10dp">
 
                 <TextView
-                    android:id="@+id/textView17"
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Symptoms" />
 
                 <TextView
                     android:id="@+id/textView18"
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="TextView" />
@@ -106,17 +106,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingStart="15dp">
+                android:padding="10dp">
 
                 <TextView
                     android:id="@+id/textView20"
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Phone" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="TextView" />
@@ -126,16 +126,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingStart="15dp">
+                android:padding="10dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Address" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="TextView" />
@@ -145,19 +145,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp">
+                android:padding="10dp">
 
                 <TextView
                     android:id="@+id/textView29"
-                    android:layout_width="match_parent"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Patient Status" />
 
                 <Spinner
                     android:id="@+id/spinner2"
-                    android:layout_width="match_parent"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
             </LinearLayout>
@@ -166,19 +165,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp">
+                android:padding="10dp">
 
                 <TextView
                     android:id="@+id/textView21"
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Test Date" />
 
                 <TextView
                     android:id="@+id/textView22"
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="TextView" />
@@ -190,19 +188,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="horizontal"
-                android:paddingLeft="15dp"
-                android:paddingRight="5dp">
+                android:padding="10dp">
 
                 <TextView
                     android:id="@+id/textView23"
-                    android:layout_width="match_parent"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Result" />
 
                 <Spinner
                     android:id="@+id/spinner3"
-                    android:layout_width="match_parent"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 

@@ -115,7 +115,10 @@ public class user {
                                                 context.startActivity(intent);
                                             }
                                         }
-                                        else if (false){
+                                        else if (object.get("Position").equals("Tester")){
+                                            Intent intent = new Intent(context,Tester_Menu_Activity.class);
+                                            intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+                                            context.startActivity(intent);
                                             Toast.makeText(context, "Login Success! Welcome", Toast.LENGTH_LONG).show();
                                         }
                                         else{
