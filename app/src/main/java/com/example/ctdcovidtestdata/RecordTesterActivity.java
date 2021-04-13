@@ -11,6 +11,7 @@ public class RecordTesterActivity extends AppCompatActivity {
 
     private EditText UserNameText, NameText, PhoneText, AddressText, PasswordText;
     private String UserName, Name, Phone, Address, Password;
+    private String TestCentreID = com.example.ctdcovidtestdata.user.testCentreID;
 
     user user = new user();
 
@@ -21,7 +22,7 @@ public class RecordTesterActivity extends AppCompatActivity {
 
         UserNameText        = findViewById(R.id.UserName);
         NameText            = findViewById(R.id.Name);
-        PhoneText           = findViewById(R.id.Phone);
+        PhoneText           = findViewById(R.id.Phone2);
         AddressText         = findViewById(R.id.Address);
         PasswordText        = findViewById(R.id.Password);
     }
@@ -33,7 +34,7 @@ public class RecordTesterActivity extends AppCompatActivity {
         Address = AddressText.getText().toString().trim();
         Password = PasswordText.getText().toString().trim();
 
-        user.recordTester(getApplicationContext(), Name, Phone, Address, UserName, Password);
+        user.recordTester(getApplicationContext(), Name, TestCentreID,Phone, Address, UserName, Password);
     }
 
     public void BackMenu(View view) {
