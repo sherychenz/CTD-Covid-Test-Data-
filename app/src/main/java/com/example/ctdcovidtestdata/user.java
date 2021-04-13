@@ -31,6 +31,7 @@ public class user {
     private static final String URL_TESTCENTRE_DATA = "ctd5758.000webhostapp.com/CentreData.php";
     private static final String URL_UPDATE_MANAGER = "ctd5758.000webhostapp.com/testcentreupdate.php";
     private static final String URL_MANAGER_DATA = "ctd5758.000webhostapp.com/userdata.php";
+    private static final String URL_RECORD_PATIENT = "ctd5758.000webhostapp.com/recordPatient.php";
 
     private String ID;
     private String UserName;
@@ -39,13 +40,14 @@ public class user {
     private String Address;
     private String Email;
     private String Password;
+    private String Symptoms;
     private Context context;
     public static String testCentreID;
 
     public user(){
     }
 
-    public user(String ID, String UserName, String Name, String Phone, String Address, String Email, String Password){
+    public user(String ID, String UserName, String Name, String Phone, String Address, String Email, String Password, String Symptoms){
         this.ID = ID;
         this.UserName = UserName;
         this.Name = Name;
@@ -53,6 +55,7 @@ public class user {
         this.Address = Address;
         this.Email = Email;
         this.Password = Password;
+        this.Symptoms = Symptoms;
     }
 
     public String getID() { return ID; }
@@ -83,6 +86,10 @@ public class user {
 
     public void setPassword(String password) { Password = password; }
 
+    public String getSymptoms() { return Symptoms; }
+
+    public void setSymptoms(String symptoms) { Password = symptoms; }
+
     public Context getContext() { return context; }
 
     public void setContext(Context context) { this.context = context; }
@@ -108,13 +115,20 @@ public class user {
                                         JSONObject object = jsonArray.getJSONObject(i);
 
                                         if (object.get("Position").equals("Manager")){
-                                            Intent intent = new Intent(context,TestCenterManagerMenuActivity.class);
-                                            intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-                                            testCentreID = (object.getString("TestCentreID"));
-                                            context.startActivity(intent);
+                                            if (object.get("Status").equals("x")){
+                                                Toast.makeText(context, "Wait until the admin approved", Toast.LENGTH_LONG).show();
+                                            }else{
+                                                Intent intent = new Intent(context,TestCenterManagerMenuActivity.class);
+                                                intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+                                                context.startActivity(intent);
+                                            }
+
                                         }
-                                        else if (false){
+                                        else if (object.get("Position").equals("Tester")){
                                             Toast.makeText(context, "Login Success! Welcome", Toast.LENGTH_LONG).show();
+                                            Intent intent = new Intent(context,Tester_Menu_Activity.class);
+                                            intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+                                            context.startActivity(intent);
                                         }
                                         else{
                                             Toast.makeText(context, "Wait until the admin approved", Toast.LENGTH_LONG).show();
@@ -376,6 +390,49 @@ public class user {
                             Toast.makeText(context, "Register Success", Toast.LENGTH_LONG).show();
 
                             Intent intent = new Intent(context, TestCenterManagerMenuActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(intent);
+
+                        } catch (JSONException e){
+                            e.printStackTrace();
+                            Toast.makeText(context, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError{
+                Map<String, String> params = new HashMap<>();
+                params.put("username", username);
+                params.put("testCentreID", testCentreID);
+                params.put("name", name);
+                params.put("phone", phone);
+                params.put("address", address);
+                params.put("password", password);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+    }
+
+    public void recordPatient(Context context , String symptoms, String name, String phone, String address, String username, String password){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_RECORD_PATIENT,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println(response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            Toast.makeText(context, "Register Success", Toast.LENGTH_LONG).show();
+
+                            Intent intent = new Intent(context, RecordTesterActivity.class);
+
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             context.startActivity(intent);
 

@@ -58,7 +58,7 @@
                 android:padding="15dp" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/Symptoms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -122,6 +122,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:onClick="RecordPatient"
                     android:text="Register"
                     android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
