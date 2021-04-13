@@ -34,6 +34,8 @@ public class Record_Patient_Activity extends AppCompatActivity {
         PasswordText        = findViewById(R.id.Password);
         spinner = findViewById(R.id.spinner);
 
+        //DROPLIST
+
         PatientType.add("Close Contact");
         PatientType.add("Infected");
         PatientType.add("Quarantined");
