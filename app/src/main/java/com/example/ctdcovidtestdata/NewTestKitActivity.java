@@ -1,11 +1,11 @@
 package com.example.ctdcovidtestdata;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class NewTestKitActivity extends AppCompatActivity {
 
@@ -33,6 +33,15 @@ public class NewTestKitActivity extends AppCompatActivity {
         TestKitName = TestKitNameText.getText().toString().trim();
         Stock = StockText.getText().toString().trim();
 
-        testkit.addNewTestKit(getApplicationContext(), TestKitName, Stock);
+        if (TestKitName.isEmpty() && Stock.isEmpty()){
+            TestKitNameText.setError("Can't be Empty");
+            StockText.setError("Can't be Empty");
+        }else  if(TestKitName.isEmpty()){
+            TestKitNameText.setError("Can't be Empty");
+        }else  if(Stock.isEmpty()){
+            StockText.setError("Can't be Empty");
+        }else{
+            testkit.addNewTestKit(getApplicationContext(), TestKitName, Stock);
+        }
     }
 }
