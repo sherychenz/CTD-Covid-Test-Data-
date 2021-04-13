@@ -124,8 +124,11 @@ public class user {
                                             }
 
                                         }
-                                        else if (false){
+                                        else if (object.get("Position").equals("Tester")){
                                             Toast.makeText(context, "Login Success! Welcome", Toast.LENGTH_LONG).show();
+                                            Intent intent = new Intent(context,Tester_Menu_Activity.class);
+                                            intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+                                            context.startActivity(intent);
                                         }
                                         else{
                                             Toast.makeText(context, "Wait until the admin approved", Toast.LENGTH_LONG).show();
