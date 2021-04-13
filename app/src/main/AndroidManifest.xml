@@ -17,6 +17,7 @@
         <activity android:name=".RegisterCenterMenuActivity" />
         <activity android:name=".TestCenterManagerMenuActivity" />
         <activity android:name=".NewTestKitActivity"/>
+        <activity android:name=".Update_Result_Activity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

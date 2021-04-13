@@ -40,6 +40,7 @@ public class user {
     private String Email;
     private String Password;
     private Context context;
+    public static String testCentreID;
 
     public user(){
     }
@@ -109,6 +110,7 @@ public class user {
                                         if (object.get("Position").equals("Manager")){
                                             Intent intent = new Intent(context,TestCenterManagerMenuActivity.class);
                                             intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+                                            testCentreID = (object.getString("TestCentreID"));
                                             context.startActivity(intent);
                                         }
                                         else if (false){
@@ -327,7 +329,7 @@ public class user {
         requestQueue1.add(stringRequest1);
     }
 
-    public void recordTester(Context context , String name, String phone, String address, String username, String password){
+    public void recordTester(Context context , String name, String testCentreID,String phone, String address, String username, String password){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_RECORD_TESTER,
                 new Response.Listener<String>() {
                     @Override
@@ -337,7 +339,7 @@ public class user {
                             JSONObject jsonObject = new JSONObject(response);
                             Toast.makeText(context, "Register Success", Toast.LENGTH_LONG).show();
 
-                            Intent intent = new Intent(context, MainActivity.class);
+                            Intent intent = new Intent(context, TestCenterManagerMenuActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             context.startActivity(intent);
 
@@ -357,6 +359,7 @@ public class user {
             protected Map<String, String> getParams() throws AuthFailureError{
                 Map<String, String> params = new HashMap<>();
                 params.put("username", username);
+                params.put("testCentreID", testCentreID);
                 params.put("name", name);
                 params.put("phone", phone);
                 params.put("address", address);
