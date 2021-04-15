@@ -15,7 +15,7 @@ public class Record_Patient_Activity extends AppCompatActivity {
 
     private EditText SymptomsText, UserNameText, NameText, PhoneText, AddressText, PasswordText;
     private String Symptoms, UserName, Name, Phone, Address, Password;
-    private String TestCentreID = com.example.ctdcovidtestdata.user.testCentreID;
+    private String TestCentreID = com.example.ctdcovidtestdata.user.testCenterID;
     private Spinner spinner;
 
     ArrayList<String>PatientType = new ArrayList<>();

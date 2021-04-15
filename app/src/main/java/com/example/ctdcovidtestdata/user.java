@@ -28,10 +28,10 @@ public class user {
     private static final String URL_REGISTER = "https://ctd5758.000webhostapp.com/register.php";
     private static final String URL_TESTCENTRE = "https://ctd5758.000webhostapp.com/testcentreregis.php";
     private static final String URL_RECORD_TESTER = "https://ctd5758.000webhostapp.com/recordtester.php";
-    private static final String URL_TESTCENTRE_DATA = "ctd5758.000webhostapp.com/CentreData.php";
-    private static final String URL_UPDATE_MANAGER = "ctd5758.000webhostapp.com/testcentreupdate.php";
-    private static final String URL_MANAGER_DATA = "ctd5758.000webhostapp.com/userdata.php";
-    private static final String URL_RECORD_PATIENT = "ctd5758.000webhostapp.com/recordPatient.php";
+    private static final String URL_TESTCENTRE_DATA = "https://ctd5758.000webhostapp.com/CentreData.php";
+    private static final String URL_UPDATE_MANAGER = "https://ctd5758.000webhostapp.com/testcentreupdate.php";
+    private static final String URL_MANAGER_DATA = "https://ctd5758.000webhostapp.com/userdata.php";
+    private static final String URL_RECORD_PATIENT = "https://ctd5758.000webhostapp.com/recordPatient.php";
 
     private String ID;
     private String UserName;
@@ -42,7 +42,8 @@ public class user {
     private String Password;
     private String Symptoms;
     private Context context;
-    public static String testCentreID;
+
+    public static String testCenterID;
 
     public user(){
     }
@@ -118,11 +119,11 @@ public class user {
                                             if (object.get("Status").equals("x")){
                                                 Toast.makeText(context, "Wait until the admin approved", Toast.LENGTH_LONG).show();
                                             }else{
+                                                testCenterID = object.getString("TestCentreID");
                                                 Intent intent = new Intent(context,TestCenterManagerMenuActivity.class);
                                                 intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                                                 context.startActivity(intent);
                                             }
-
                                         }
                                         else if (object.get("Position").equals("Tester")){
                                             Toast.makeText(context, "Login Success! Welcome", Toast.LENGTH_LONG).show();
@@ -251,13 +252,13 @@ public class user {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        System.out.println(response);
+                        System.out.println("get Test Center " + response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            JSONArray testCentreArray = jsonObject.getJSONArray("Testcebtre");
+                            JSONArray testCentreArray = jsonObject.getJSONArray("Testcentre");
                             for (int i = 0; i < testCentreArray.length(); i++){
                                 JSONObject testCentreObj = testCentreArray.getJSONObject(i);
-                                if (testCentreObj.getString("TestCemtreName").equals(name)){
+                                if (testCentreObj.getString("TestCentreName").equals(name)){
                                     managerUpdate(context,testCentreObj.getString("ID"),managerID);
                                 }
                             }
@@ -273,6 +274,8 @@ public class user {
                     }
                 }
         );
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
     }
 
     public void managerData(Context context, String managerName, String name){
@@ -280,7 +283,7 @@ public class user {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        System.out.println(response);
+                        System.out.println(" Manager Response " + response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray userArray = jsonObject.getJSONArray("UserData");
@@ -303,6 +306,8 @@ public class user {
                     }
                 }
         );
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
     }
 
     public void managerUpdate(Context context , String testCenterID, String managerID){
@@ -310,7 +315,7 @@ public class user {
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            System.out.println(response);
+                            System.out.println(managerID + " Manager Update Response " + response);
                             try {
                                 JSONObject jsonObject = new JSONObject(response);
                                 Toast.makeText(context, "Register Success", Toast.LENGTH_LONG).show();
@@ -334,7 +339,7 @@ public class user {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError{
                 Map<String, String> params = new HashMap<>();
-                params.put("ID", managerID);
+                params.put("id", managerID);
                 params.put("testcentreid", testCenterID);
                 return params;
             }
@@ -353,7 +358,7 @@ public class user {
                             JSONObject jsonObject = new JSONObject(response);
                             Toast.makeText(context, "Register Success", Toast.LENGTH_LONG).show();
 
-                            Intent intent = new Intent(context, TestCenterManagerMenuActivity.class);
+                            Intent intent = new Intent(context, MainActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             context.startActivity(intent);
 
@@ -373,7 +378,6 @@ public class user {
             protected Map<String, String> getParams() throws AuthFailureError{
                 Map<String, String> params = new HashMap<>();
                 params.put("username", username);
-                params.put("testCentreID", testCentreID);
                 params.put("name", name);
                 params.put("phone", phone);
                 params.put("address", address);

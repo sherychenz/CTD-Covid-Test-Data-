@@ -11,9 +11,10 @@ public class RecordTesterActivity extends AppCompatActivity {
 
     private EditText UserNameText, NameText, PhoneText, AddressText, PasswordText;
     private String UserName, Name, Phone, Address, Password;
-    private String TestCentreID = com.example.ctdcovidtestdata.user.testCentreID;
 
     user user = new user();
+
+    private String testCenterID = com.example.ctdcovidtestdata.user.testCenterID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,7 @@ public class RecordTesterActivity extends AppCompatActivity {
 
         UserNameText        = findViewById(R.id.UserName);
         NameText            = findViewById(R.id.Name);
-        PhoneText           = findViewById(R.id.Phone2);
+        PhoneText           = findViewById(R.id.Phone);
         AddressText         = findViewById(R.id.Address);
         PasswordText        = findViewById(R.id.Password);
     }
@@ -33,6 +34,7 @@ public class RecordTesterActivity extends AppCompatActivity {
         Phone = PhoneText.getText().toString().trim();
         Address = AddressText.getText().toString().trim();
         Password = PasswordText.getText().toString().trim();
+
 
         if (UserName.isEmpty() && Name.isEmpty() &&  Phone.isEmpty() && Address.isEmpty() && Password.isEmpty()){
             UserNameText.setError("Can't be Empty");
@@ -51,7 +53,7 @@ public class RecordTesterActivity extends AppCompatActivity {
         }else if (Password.isEmpty()){
             PasswordText.setError("Can't be Empty");
         }else{
-            user.recordTester(getApplicationContext(), TestCentreID, Name, Phone, Address, UserName, Password);
+            user.recordTester(getApplicationContext(), testCenterID, Name, Phone, Address, UserName, Password);
         }
     }
 
