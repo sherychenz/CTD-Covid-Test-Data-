@@ -46,7 +46,7 @@
                 android:id="@+id/spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="15dp" />
+                android:padding="10dp" />
 
             <EditText
                 android:id="@+id/NameText"
@@ -55,7 +55,7 @@
                 android:ems="10"
                 android:hint="Patient Name"
                 android:inputType="textPersonName"
-                android:padding="15dp" />
+                android:padding="10dp" />
 
             <EditText
                 android:id="@+id/Symptoms"
@@ -64,7 +64,7 @@
                 android:ems="10"
                 android:hint="Symptoms"
                 android:inputType="textPersonName"
-                android:padding="15dp" />
+                android:padding="10dp" />
 
             <EditText
                 android:id="@+id/PhoneText"
@@ -73,7 +73,7 @@
                 android:ems="10"
                 android:hint="Phone"
                 android:inputType="phone"
-                android:padding="15dp" />
+                android:padding="10dp" />
 
             <EditText
                 android:id="@+id/AddressText"
@@ -82,7 +82,7 @@
                 android:ems="10"
                 android:hint="Address"
                 android:inputType="textPostalAddress"
-                android:padding="15dp" />
+                android:padding="10dp" />
 
             <EditText
                 android:id="@+id/UserNameText"
@@ -91,7 +91,7 @@
                 android:ems="10"
                 android:hint="Username"
                 android:inputType="textPersonName"
-                android:padding="15dp" />
+                android:padding="10dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -106,7 +106,7 @@
                     android:ems="10"
                     android:hint="Password"
                     android:inputType="textPassword"
-                    android:padding="15dp" />
+                    android:padding="10dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.cardview.widget.CardView

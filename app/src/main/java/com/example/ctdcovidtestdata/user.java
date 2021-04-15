@@ -421,7 +421,7 @@ public class user {
         requestQueue.add(stringRequest);
     }
 
-    public void recordPatient(Context context , String symptoms, String name, String phone, String address, String username, String password){
+    public void recordPatient(Context context , String symptoms, String name, String testCentreID, String phone, String address, String username, String password){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_RECORD_PATIENT,
                 new Response.Listener<String>() {
                     @Override
@@ -457,6 +457,7 @@ public class user {
                 params.put("phone", phone);
                 params.put("address", address);
                 params.put("password", password);
+                params.put("symptoms", symptoms);
                 return params;
             }
         };

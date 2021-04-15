@@ -15,6 +15,7 @@ public class Record_Patient_Activity extends AppCompatActivity {
 
     private EditText SymptomsText, UserNameText, NameText, PhoneText, AddressText, PasswordText;
     private String Symptoms, UserName, Name, Phone, Address, Password;
+    private String TestCentreID = com.example.ctdcovidtestdata.user.testCentreID;
     private Spinner spinner;
 
     ArrayList<String>PatientType = new ArrayList<>();
@@ -56,7 +57,7 @@ public class Record_Patient_Activity extends AppCompatActivity {
         Address = AddressText.getText().toString().trim();
         Password = PasswordText.getText().toString().trim();
 
-        user.recordPatient(getApplicationContext(), Symptoms, Name, Phone, Address, UserName, Password);
+        user.recordPatient(getApplicationContext(), Symptoms, Name, TestCentreID, Phone, Address, UserName, Password);
     }
 
     public void BackMenu(View view) {
