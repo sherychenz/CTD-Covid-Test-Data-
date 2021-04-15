@@ -11,16 +11,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+import static com.example.ctdcovidtestdata.user.testCenterID;
+
 public class Record_Patient_Activity extends AppCompatActivity {
 
     private EditText SymptomsText, UserNameText, NameText, PhoneText, AddressText, PasswordText;
     private String Symptoms, UserName, Name, Phone, Address, Password;
-    private String TestCentreID = com.example.ctdcovidtestdata.user.testCenterID;
     private Spinner spinner;
 
     ArrayList<String>PatientType = new ArrayList<>();
 
     user user = new user();
+
+    private String testCentreID = testCenterID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,7 @@ public class Record_Patient_Activity extends AppCompatActivity {
         PhoneText           = findViewById(R.id.Phone);
         AddressText         = findViewById(R.id.Address);
         PasswordText        = findViewById(R.id.Password);
-        spinner = findViewById(R.id.spinner);
+        spinner             = findViewById(R.id.spinner);
 
         //DROPLIST
 
@@ -57,7 +60,29 @@ public class Record_Patient_Activity extends AppCompatActivity {
         Address = AddressText.getText().toString().trim();
         Password = PasswordText.getText().toString().trim();
 
-        user.recordPatient(getApplicationContext(), Symptoms, Name, TestCentreID, Phone, Address, UserName, Password);
+        if (Symptoms.isEmpty() && UserName.isEmpty() && Name.isEmpty() && Phone.isEmpty() && Address.isEmpty() && Password.isEmpty()) {
+            SymptomsText.setError("Can't be Empty");
+            UserNameText.setError("Can't be Empty");
+            NameText.setError("Can't be Empty");
+            PhoneText.setError("Can't be Empty");
+            AddressText.setError("Can't be Empty");
+            PasswordText.setError("Can't be Empty");
+        } else if(Symptoms.isEmpty()){
+            SymptomsText.setError("Can't be Empty");
+        }else if(UserName.isEmpty()){
+            UserNameText.setError("Can't be Empty");
+        }else  if(Name.isEmpty()){
+            NameText.setError("Can't be Empty");
+        }else  if(Phone.isEmpty()){
+            PhoneText.setError("Can't be Empty");
+        }else  if(Address.isEmpty()){
+            AddressText.setError("Can't be Empty");
+        }else if (Password.isEmpty()){
+            PasswordText.setError("Can't be Empty");
+        }else{
+            System.out.println("=====================" + testCenterID);
+            user.recordPatient(getApplicationContext(), Symptoms, Name, testCentreID, Phone, Address, UserName, Password);
+        }
     }
 
     public void BackMenu(View view) {

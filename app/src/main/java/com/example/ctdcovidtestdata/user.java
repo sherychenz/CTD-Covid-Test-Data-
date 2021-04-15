@@ -390,11 +390,12 @@ public class user {
         requestQueue.add(stringRequest);
     }
 
-    public void recordPatient(Context context , String symptoms, String name, String testCentreID, String phone, String address, String username, String password){
+    public void recordPatient(Context context ,  String name, String TestCentreID, String symptoms, String phone, String address, String username, String password){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_RECORD_PATIENT,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        System.out.println("=====================" + TestCentreID);
                         System.out.println(response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
@@ -420,13 +421,14 @@ public class user {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError{
                 Map<String, String> params = new HashMap<>();
-                params.put("username", username);
-                params.put("testCentreID", testCentreID);
                 params.put("name", name);
+                params.put("testCentreID", TestCentreID);
+                params.put("symptoms", symptoms);
                 params.put("phone", phone);
                 params.put("address", address);
+                params.put("username", username);
                 params.put("password", password);
-                params.put("symptoms", symptoms);
+
                 return params;
             }
         };
