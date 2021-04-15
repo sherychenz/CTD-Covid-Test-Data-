@@ -379,7 +379,7 @@ public class user {
         requestQueue1.add(stringRequest1);
     }
 
-    public void recordTester(Context context , String name, String testCentreID,String phone, String address, String username, String password){
+    public void recordTester(Context context , String name, String TestCentreID,String phone, String address, String username, String password){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_RECORD_TESTER,
                 new Response.Listener<String>() {
                     @Override

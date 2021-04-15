@@ -174,9 +174,7 @@ public class ManageTestKitStockActivity extends AppCompatActivity {
 
     public void UpdateStock(View view) {
         updatestock = Stock.getText().toString().trim();
-
         testkit testkit = new testkit();
-
         testkit.UpdateStock(getApplicationContext(), updatestock);
     }
 }
