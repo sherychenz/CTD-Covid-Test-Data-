@@ -53,7 +53,8 @@ public class RecordTesterActivity extends AppCompatActivity {
         }else if (Password.isEmpty()){
             PasswordText.setError("Can't be Empty");
         }else{
-            user.recordTester(getApplicationContext(), testCenterID, Name, Phone, Address, UserName, Password);
+            System.out.println("=====================" + testCenterID);
+            user.recordTester(getApplicationContext() , Name, testCenterID,Phone, Address, UserName, Password);
         }
     }
 

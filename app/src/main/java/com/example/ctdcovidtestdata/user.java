@@ -109,9 +109,7 @@ public class user {
                                 JSONObject jsonObject = new JSONObject(response);
                                 String success = jsonObject.getString("success");
                                 JSONArray jsonArray = jsonObject.getJSONArray("login");
-
                                 if(success.equals("1")){
-
                                     for(int i=0; i < jsonArray.length();i++){
                                         JSONObject object = jsonArray.getJSONObject(i);
 
@@ -120,6 +118,7 @@ public class user {
                                                 Toast.makeText(context, "Wait until the admin approved", Toast.LENGTH_LONG).show();
                                             }else{
                                                 testCenterID = object.getString("TestCentreID");
+                                                System.out.println("test center id = " + testCenterID);
                                                 Intent intent = new Intent(context,TestCenterManagerMenuActivity.class);
                                                 intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                                                 context.startActivity(intent);
@@ -353,6 +352,7 @@ public class user {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        System.out.println("=====================" + TestCentreID);
                         System.out.println(response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
@@ -378,6 +378,7 @@ public class user {
             protected Map<String, String> getParams() throws AuthFailureError{
                 Map<String, String> params = new HashMap<>();
                 params.put("username", username);
+                params.put("testCentreID",TestCentreID);
                 params.put("name", name);
                 params.put("phone", phone);
                 params.put("address", address);
