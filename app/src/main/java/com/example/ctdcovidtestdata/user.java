@@ -246,42 +246,6 @@ public class user {
         requestQueue1.add(stringRequest1);
     }
 
-    public void regisValidation(Context context , String name, String phone, String email, String address, String username, String password){
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_MANAGER_DATA,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        System.out.println("Response ----->" + response);
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            JSONArray userArray = jsonObject.getJSONArray("UserData");
-                            boolean status = true;
-                            for (int i = 0; i < userArray.length(); i++){
-                                JSONObject userObject = userArray.getJSONObject(i);
-                                if (userObject.get("UserName").equals(username)){
-                                    status = false;
-                                }
-                            }if (status){
-                                register(context, name, phone,email, address, username, password);
-                            }else {
-                                Toast.makeText(context,"Username already exist", Toast.LENGTH_LONG).show();
-                            }
-                        }catch (JSONException e){
-                            e.printStackTrace();
-                            Toast.makeText(context, "Human Error", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(context, "Connection Error", Toast.LENGTH_LONG).show();
-                    }
-                });
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-        requestQueue.add(stringRequest);
-    }
-
     public void getTestCenter(Context context , String name, String managerID){
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_TESTCENTRE_DATA,
                 new Response.Listener<String>() {

@@ -34,7 +34,7 @@ public class RegisterCenterMenuActivity extends AppCompatActivity {
         Address = AddressText.getText().toString().trim();
         Password = PasswordText.getText().toString().trim();
 
-        user.regisValidation(getApplicationContext(), Name, Phone, Email, Address, UserName, Password);
+        user.register(getApplicationContext(), Name, Phone, Email, Address, UserName, Password);
 
     }
 }
