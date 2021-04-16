@@ -20,9 +20,10 @@ public class Tester_Menu_Activity extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    public void UpdateResult(View view) {
-  //      Intent intent = new Intent(getApplicationContext(), Update_Result_Activity.class);
-    //    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-      //  startActivity(intent);
-   // }
+    public void UpdateResult(View view) {
+        Intent intent = new Intent(getApplicationContext(), Update_Result_Activity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
 }

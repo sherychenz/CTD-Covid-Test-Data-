@@ -3,6 +3,7 @@ package com.example.ctdcovidtestdata;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -16,11 +17,9 @@ import static com.example.ctdcovidtestdata.user.testCenterID;
 public class Record_Patient_Activity extends AppCompatActivity {
 
     private EditText SymptomsText, UserNameText, NameText, PhoneText, AddressText, PasswordText;
-    private String Symptoms, UserName, Name, Phone, Address, Password;
+    private String Symptoms, UserName, patientType, Name, Phone, Address, Password;
     private Spinner spinner;
-
     ArrayList<String>PatientType = new ArrayList<>();
-
     user user = new user();
 
     private String testCentreID = testCenterID;
@@ -31,15 +30,14 @@ public class Record_Patient_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_record__patient_);
 
         SymptomsText        = findViewById(R.id.Symptoms);
-        UserNameText        = findViewById(R.id.UserName);
-        NameText            = findViewById(R.id.Name);
-        PhoneText           = findViewById(R.id.Phone);
-        AddressText         = findViewById(R.id.Address);
-        PasswordText        = findViewById(R.id.Password);
+        UserNameText        = findViewById(R.id.UserNameText);
+        NameText            = findViewById(R.id.NameText);
+        PhoneText           = findViewById(R.id.PhoneText);
+        AddressText         = findViewById(R.id.AddressText);
+        PasswordText        = findViewById(R.id.PasswordText);
         spinner             = findViewById(R.id.spinner);
 
         //DROPLIST
-
         PatientType.add("Close Contact");
         PatientType.add("Infected");
         PatientType.add("Quarantined");
@@ -50,6 +48,18 @@ public class Record_Patient_Activity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter (this, android.R.layout.simple_spinner_item, PatientType);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                patientType = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     public void RecordPatient(View view) {
@@ -81,7 +91,7 @@ public class Record_Patient_Activity extends AppCompatActivity {
             PasswordText.setError("Can't be Empty");
         }else{
             System.out.println("=====================" + testCenterID);
-            user.recordPatient(getApplicationContext(), Symptoms, Name, testCentreID, Phone, Address, UserName, Password);
+            user.recordPatient(getApplicationContext(), patientType, Name, testCentreID, Symptoms, Phone, Address, UserName, Password);
         }
     }
 

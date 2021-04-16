@@ -125,6 +125,8 @@ public class user {
                                             }
                                         }
                                         else if (object.get("Position").equals("Tester")){
+                                            testCenterID = object.getString("TestCentreID");
+                                            System.out.println("test center id = " + testCenterID);
                                             Toast.makeText(context, "Login Success! Welcome", Toast.LENGTH_LONG).show();
                                             Intent intent = new Intent(context,Tester_Menu_Activity.class);
                                             intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
@@ -390,7 +392,7 @@ public class user {
         requestQueue.add(stringRequest);
     }
 
-    public void recordPatient(Context context ,  String name, String TestCentreID, String symptoms, String phone, String address, String username, String password){
+    public void recordPatient(Context context ,String PatientType,  String name, String TestCentreID, String symptoms, String phone, String address, String username, String password){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_RECORD_PATIENT,
                 new Response.Listener<String>() {
                     @Override
@@ -421,6 +423,7 @@ public class user {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError{
                 Map<String, String> params = new HashMap<>();
+                params.put("patientype", PatientType);
                 params.put("name", name);
                 params.put("testCentreID", TestCentreID);
                 params.put("symptoms", symptoms);
