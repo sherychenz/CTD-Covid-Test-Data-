@@ -89,10 +89,8 @@ public class ManageTestKitStockActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
-
     }
 
     public void displayData(String value){

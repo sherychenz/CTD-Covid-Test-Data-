@@ -55,10 +55,10 @@
                     android:text="Patient Type" />
 
                 <TextView
+                    android:id="@+id/getPtype"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TextView" />
+                    android:layout_weight="1" />
 
             </LinearLayout>
 
@@ -75,10 +75,10 @@
                     android:text="Patient  Name" />
 
                 <TextView
+                    android:id="@+id/getPname"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TextView" />
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
@@ -95,11 +95,10 @@
                     android:text="Symptoms" />
 
                 <TextView
-                    android:id="@+id/textView18"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/getPsymptoms"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TextView" />
+                    android:layout_weight="1" />
 
             </LinearLayout>
 
@@ -117,10 +116,10 @@
                     android:text="Phone" />
 
                 <TextView
+                    android:id="@+id/getPphone"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TextView" />
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
@@ -136,10 +135,10 @@
                     android:text="Address" />
 
                 <TextView
+                    android:id="@+id/getPaddress"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TextView" />
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
@@ -177,11 +176,10 @@
                     android:text="Test Date" />
 
                 <TextView
-                    android:id="@+id/textView22"
+                    android:id="@+id/getTestdate"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TextView" />
+                    android:layout_weight="1" />
 
             </LinearLayout>
 
