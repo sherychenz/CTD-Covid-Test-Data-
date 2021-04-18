@@ -1,6 +1,8 @@
 package com.example.ctdcovidtestdata;
 
 import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,11 +16,12 @@ import java.util.ArrayList;
 
 import static com.example.ctdcovidtestdata.user.testCenterID;
 
-public class Record_Patient_Activity extends AppCompatActivity {
+public class  Record_Patient_Activity extends AppCompatActivity {
 
     private EditText SymptomsText, UserNameText, NameText, PhoneText, AddressText, PasswordText;
     private String Symptoms, UserName, patientType, Name, Phone, Address, Password;
     private Spinner spinner;
+    private String Testdate;
     ArrayList<String>PatientType = new ArrayList<>();
     user user = new user();
 
@@ -36,6 +39,11 @@ public class Record_Patient_Activity extends AppCompatActivity {
         AddressText         = findViewById(R.id.AddressText);
         PasswordText        = findViewById(R.id.PasswordText);
         spinner             = findViewById(R.id.spinner);
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("DD/MM/YYYY");
+        String date = simpleDateFormat.format(Calendar.getInstance().getTime());
+        Testdate = date;
+        System.out.println("----------------> Today"+ Testdate);
 
         //DROPLIST
         PatientType.add("Close Contact");
@@ -91,7 +99,7 @@ public class Record_Patient_Activity extends AppCompatActivity {
             PasswordText.setError("Can't be Empty");
         }else{
             System.out.println("=====================" + testCenterID);
-            user.recordPatient(getApplicationContext(), patientType, Name, testCentreID, Symptoms, Phone, Address, UserName, Password);
+            user.recordPatient(getApplicationContext(), patientType, Name, testCentreID, Symptoms, Phone, Address, UserName, Password, Testdate);
         }
     }
 

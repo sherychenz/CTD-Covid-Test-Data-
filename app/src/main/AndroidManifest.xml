@@ -12,13 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CTDCovidTestData">
-        <activity android:name=".ManageTestKitStockActivity"></activity>
+        <activity android:name=".Patient_Result_Activity"></activity>
+        <activity android:name=".Search_Test_Activity" />
+        <activity android:name=".ManageTestKitStockActivity" />
         <activity android:name=".RecordTesterActivity" />
         <activity android:name=".RegisterCenterMenuActivity" />
         <activity android:name=".TestCenterManagerMenuActivity" />
-        <activity android:name=".NewTestKitActivity"/>
-        <activity android:name=".Tester_Menu_Activity"/>
-        <activity android:name=".Record_Patient_Activity"/>
+        <activity android:name=".NewTestKitActivity" />
+        <activity android:name=".Tester_Menu_Activity" />
+        <activity android:name=".Record_Patient_Activity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

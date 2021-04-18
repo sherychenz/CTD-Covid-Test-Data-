@@ -32,6 +32,7 @@ public class user {
     private static final String URL_UPDATE_MANAGER = "https://ctd5758.000webhostapp.com/testcentreupdate.php";
     private static final String URL_MANAGER_DATA = "https://ctd5758.000webhostapp.com/userdata.php";
     private static final String URL_RECORD_PATIENT = "https://ctd5758.000webhostapp.com/recordPatient.php";
+    private static final String URL_ADD_TEST = "https://ctd5758.000webhostapp.com/recordtest.php";
 
     private String ID;
     private String UserName;
@@ -392,19 +393,19 @@ public class user {
         requestQueue.add(stringRequest);
     }
 
-    public void recordPatient(Context context ,String PatientType,  String name, String TestCentreID, String symptoms, String phone, String address, String username, String password){
+    public void recordPatient(Context context ,String PatientType,  String name, String TestCentreID, String symptoms, String phone, String address, String username, String password, String testDate){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_RECORD_PATIENT,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        System.out.println("=====================" + TestCentreID);
+                        System.out.println("=====================> " + TestCentreID);
                         System.out.println(response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             Toast.makeText(context, "Register Success", Toast.LENGTH_LONG).show();
+                            testData(context,username,testDate);
 
                             Intent intent = new Intent(context, RecordTesterActivity.class);
-
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             context.startActivity(intent);
 
@@ -438,4 +439,77 @@ public class user {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
     }
+
+    public  void addTest (final Context context, final String userID, final String testCenterID, final String createDate){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ADD_TEST,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("-----------------> add Test " + response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            Toast.makeText(context, "Register Success", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(context, Record_Patient_Activity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(intent);
+                            Toast.makeText(context," Register Success", Toast.LENGTH_LONG).show();
+
+                        } catch (JSONException e){
+                            e.printStackTrace();
+                            Toast.makeText(context, "Error", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(context, "Connection Error", Toast.LENGTH_LONG).show();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError{
+                Map<String, String> params = new HashMap<>();
+                params.put("userID", userID);
+                params.put("testCentreID", testCenterID);
+                params.put("createDate", createDate);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+    }
+
+    public void testData(Context context, String userName, String createDate){
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_MANAGER_DATA,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println(" Test Data ------------>  " + response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONArray userArray = jsonObject.getJSONArray("UserData");
+                            for (int i = 0; i < userArray.length(); i++){
+                                JSONObject userObj = userArray.getJSONObject(i);
+                                if (userName.equals(userObj.getString("UserName"))){
+                                    addTest(context, userObj.getString("ID"),userObj.getString("TestCentreID"),createDate);
+                                }
+
+                            }
+                        } catch (JSONException e){
+                            e.printStackTrace();
+                            Toast.makeText(context, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                }
+        );
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+    }
+
 }
