@@ -48,7 +48,7 @@
                 android:layout_marginBottom="15dp"
                 android:ems="10"
                 android:hint="Insert Test ID"
-                android:inputType="textPersonName"
+                android:inputType="numberDecimal"
                 android:padding="15dp" />
 
             <androidx.cardview.widget.CardView
@@ -63,6 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:onClick="SearchTest"
                     android:text="Search"
                     android:textStyle="bold" />
             </androidx.cardview.widget.CardView>

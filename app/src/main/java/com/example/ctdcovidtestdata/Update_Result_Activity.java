@@ -41,7 +41,7 @@ public class Update_Result_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_record__patient_);
+        setContentView(R.layout.activity_update__result_);
 
         patientType = findViewById(R.id.getPtype);
         patientName = findViewById(R.id.getPname);
@@ -51,20 +51,20 @@ public class Update_Result_Activity extends AppCompatActivity {
         patientTestDate = findViewById(R.id.getTestdate);
 
         spinner1             = findViewById(R.id.spinner1);
-        spinner2             = findViewById(R.id.spinner1);
+        spinner2             = findViewById(R.id.spinner2);
 
         //DROPLIST STATUS
         PatientStatus.add("Pending");
-        PatientStatus.add("Infected");
+        PatientStatus.add("Complete");
         PatientResult.add("Positive");
         PatientResult.add("Negative");
 
-        Spinner spinner1 = (Spinner) findViewById(R.id.spinner1);
+        //Spinner spinner1 = (Spinner) findViewById(R.id.spinner1);
         ArrayAdapter<String> adapter1 = new ArrayAdapter (this, android.R.layout.simple_spinner_item, PatientStatus);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner1.setAdapter(adapter1);
 
-        Spinner spinner2 = (Spinner) findViewById(R.id.spinner1);
+        //Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
         ArrayAdapter<String> adapter2 = new ArrayAdapter (this, android.R.layout.simple_spinner_item, PatientResult);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
@@ -105,7 +105,6 @@ public class Update_Result_Activity extends AppCompatActivity {
         });
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
-
     }
 
     public void BackMenu(View view) {
