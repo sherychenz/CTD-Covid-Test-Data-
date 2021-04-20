@@ -42,13 +42,16 @@ public class Search_Test_Activity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         System.out.println("=============" + response);
+                        System.out.println("============= ---- " + testID);
+
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray ResultArray = jsonObject.getJSONArray("testresult");
                             for (int i = 0; i < ResultArray.length(); i++) {
                                 JSONObject ResultObject = ResultArray.getJSONObject(i);
                                 if (ResultObject.getString("testresultID").equals(testID)) {
-                                    resultID = ResultObject.getString("testresultID");
+                                    System.out.println("============= ---- " + testID);
+                                    resultID = testID;
                                     Intent intent = new Intent(getApplicationContext(), Update_Result_Activity.class);
                                     startActivity(intent);
                                 }
@@ -73,6 +76,9 @@ public class Search_Test_Activity extends AppCompatActivity {
         testID = searchID.getText().toString();
         if (!testID.isEmpty()) {
             SearchTest(testID);
+//            Intent intent = new Intent(this,Update_Result_Activity.class);
+//            intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(intent);
         }else{
             searchID.setError("User can't be empty");
         }
