@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,11 +50,11 @@ public class Update_Result_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update__result_);
 
-        patientType = findViewById(R.id.getPtype);
-        patientName = findViewById(R.id.getPname);
-        patientSymptoms = findViewById(R.id.getPsymptoms);
+        patientType = findViewById(R.id.getPtype1);
+        patientName = findViewById(R.id.getPname1);
+        patientSymptoms = findViewById(R.id.getPsymptoms1);
         patientPhone = findViewById(R.id.getPphone);
-        patientAddress = findViewById(R.id.getPaddress);
+        patientAddress = findViewById(R.id.getPaddress1);
         patientTestDate = findViewById(R.id.getTestdate);
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/YYYY");

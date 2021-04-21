@@ -133,6 +133,14 @@ public class user {
                                             intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                                             context.startActivity(intent);
                                         }
+                                        else if (object.get("Position").equals("Patient")){
+                                            testCenterID = object.getString("TestCentreID");
+                                            System.out.println("test center id = " + testCenterID);
+                                            Toast.makeText(context, "Login Success! Welcome", Toast.LENGTH_LONG).show();
+                                            Intent intent = new Intent(context,Patient_Result_Activity.class);
+                                            intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+                                            context.startActivity(intent);
+                                        }
                                         else{
                                             Toast.makeText(context, "Wait until the admin approved", Toast.LENGTH_LONG).show();
                                         }

@@ -55,7 +55,7 @@
                     android:text="Patient Type" />
 
                 <TextView
-                    android:id="@+id/getPtype"
+                    android:id="@+id/getPtype1"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
@@ -75,7 +75,7 @@
                     android:text="Patient  Name" />
 
                 <TextView
-                    android:id="@+id/getPname"
+                    android:id="@+id/getPname1"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
@@ -95,7 +95,7 @@
                     android:text="Symptoms" />
 
                 <TextView
-                    android:id="@+id/getPsymptoms"
+                    android:id="@+id/getPsymptoms1"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
@@ -135,7 +135,7 @@
                     android:text="Address" />
 
                 <TextView
-                    android:id="@+id/getPaddress"
+                    android:id="@+id/getPaddress1"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />

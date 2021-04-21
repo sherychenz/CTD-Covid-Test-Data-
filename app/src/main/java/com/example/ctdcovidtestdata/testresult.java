@@ -24,13 +24,19 @@ public class testresult {
     private String testresultID;
     private String Result;
     private String Status;
+    private String PatientName;
+    private String TestDate;
+    private String ResultDate;
 
     public testresult() {
     }
-    public testresult(String testresultID, String Result, String Status){
+    public testresult(String testresultID, String Result, String Status, String PatientName, String TestDate, String ResultDdate){
         this.testresultID = testresultID;
         this.Result = Result;
         this.Status = Status;
+        this.PatientName = PatientName;
+        this.TestDate = TestDate;
+        this.ResultDate = ResultDdate;
     }
     public String getTestresultID() { return testresultID; }
 
@@ -43,6 +49,18 @@ public class testresult {
     public String getStatus() { return Status; }
 
     public void setStatus(String Status) { Status = Status; }
+
+    public String getPatientName() { return PatientName; }
+
+    public void setPatientName(String PatientName) { PatientName = PatientName; }
+
+    public String getTestDate() { return TestDate; }
+
+    public void setTestDate(String TestDate) { TestDate = TestDate; }
+
+    public String getResultDate() { return ResultDate; }
+
+    public void setResultDate(String ResultDate) { ResultDate = ResultDate; }
 
     public void resultupdate(String Result, String Status){
     }
@@ -57,7 +75,7 @@ public class testresult {
                             JSONObject jsonObject = new JSONObject(response);
                             Toast.makeText(context, "Success Change", Toast.LENGTH_LONG).show();
 
-                            Intent intent = new Intent(context, Update_Result_Activity.class);
+                            Intent intent = new Intent(context, Tester_Menu_Activity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             context.startActivity(intent);
 
