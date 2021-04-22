@@ -1,12 +1,12 @@
 package com.example.ctdcovidtestdata;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -22,20 +22,24 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Patient_Result_Activity extends AppCompatActivity {
-    RecyclerView ListTest;
-    RecyclerView.LayoutManager layoutManager;
+public class Test_Detail_Activity extends AppCompatActivity {
+    private TextView PatientTypeText, NameText, SymptomsText, PhoneText, AddressText, TestDateText, ResultText;
     private ArrayList<testresult> testArray = new ArrayList<>();
-    public static  String patientID;
 
     private String URL_SEARCH_ID = "https://ctd5758.000webhostapp.com/testdata.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_patient__result_);
-        ListTest = findViewById(R.id.ListTest);
-        layoutManager = new LinearLayoutManager(getApplicationContext());
-        ListTest.setLayoutManager(layoutManager);
+        setContentView(R.layout.activity_test__detail_);
+
+        PatientTypeText = findViewById(R.id.getPtype1);
+        NameText        = findViewById(R.id.getPname1);
+        SymptomsText        = findViewById(R.id.getPsymptoms1);
+        PhoneText           = findViewById(R.id.getPphone1);
+        AddressText         = findViewById(R.id.getPaddress1);
+        TestDateText        = findViewById(R.id.getTestdate1);
+        ResultText        = findViewById(R.id.getPResult1);
+
         getData();
     }
 
@@ -50,16 +54,15 @@ public class Patient_Result_Activity extends AppCompatActivity {
                             JSONArray testarray = jsonObject.getJSONArray("testresult");
                             for (int i = 0; i < testarray.length(); i++) {
                                 JSONObject testresultobject = testarray.getJSONObject(i);
-                                testArray.add(new testresult(testresultobject.getString("testresultID"),
-                                        testresultobject.getString("Result"),
-                                        testresultobject.getString("Status"),
-                                        testresultobject.getString("Name"),
-                                        testresultobject.getString("TestDate"),
-                                        testresultobject.getString("ResultDate")));
-                                patientID= testresultobject.getString("testresultID");
+                                PatientTypeText.setText(testresultobject.getString("PatientType"));
+                                NameText.setText(testresultobject.getString("Name"));
+                                SymptomsText.setText(testresultobject.getString("Symptoms"));
+                                PhoneText.setText(testresultobject.getString("Phone"));
+                                AddressText.setText(testresultobject.getString("Address"));
+                                TestDateText.setText(testresultobject.getString("TestDate"));
+                                ResultText.setText(testresultobject.getString("Result"));
                             }
-                            ListAdapter listAdapter = new ListAdapter(getApplicationContext(),testArray);
-                            ListTest.setAdapter(listAdapter);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(), "Human Error", Toast.LENGTH_LONG).show();
@@ -75,9 +78,9 @@ public class Patient_Result_Activity extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    public void SignOut(View view) {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+    public void BackMenu(View view) {
+        Intent intent = new Intent(getApplicationContext(), Patient_Result_Activity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-        finish();
     }
 }

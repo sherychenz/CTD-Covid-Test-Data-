@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".Update_Result_Activity">
+    tools:context=".Test_Detail_Activity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -145,27 +145,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="10dp"
-                android:paddingRight="15dp">
-
-                <TextView
-                    android:id="@+id/textView29"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Patient Status" />
-
-                <Spinner
-                    android:id="@+id/spinner1"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:padding="10dp">
 
                 <TextView
@@ -186,7 +165,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:orientation="horizontal"
                 android:padding="10dp">
 
@@ -197,48 +175,29 @@
                     android:layout_weight="1"
                     android:text="Result" />
 
-                <Spinner
-                    android:id="@+id/spinner2"
+                <TextView
+                    android:id="@+id/getPResult1"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
             </LinearLayout>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="190dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                app:cardBackgroundColor="#5FAC60"
-                app:cardCornerRadius="25dp">
-
-                <TextView
-                    android:id="@+id/textView24"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:onClick="UpdateResult"
-                    android:text="Update"
-                    android:textStyle="bold" />
-            </androidx.cardview.widget.CardView>
-
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:id="@+id/imageView13"
+    <ImageButton
+        android:id="@+id/imageButton4"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:background="@null"
         android:onClick="BackMenu"
         app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintHorizontal_bias="0.082"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/back" />
 </androidx.constraintlayout.widget.ConstraintLayout>

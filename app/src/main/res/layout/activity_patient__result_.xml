@@ -22,7 +22,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageView
@@ -43,8 +43,31 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/ListTest"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="190dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:foregroundGravity="center"
+                app:cardBackgroundColor="#5FAC60"
+                app:cardCornerRadius="25dp">
+
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:onClick="SignOut"
+                    android:text="Sign Out"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

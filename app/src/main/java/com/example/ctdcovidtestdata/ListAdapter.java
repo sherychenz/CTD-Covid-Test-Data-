@@ -45,14 +45,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         holder.ListHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context,Patient_Result_Activity.class);
+                Intent intent = new Intent(context,Test_Detail_Activity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
-
             }
         });
     }
-
     @Override
     public int getItemCount() {
         return Arraytest.size();
@@ -67,7 +65,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             PatientNameL = itemView.findViewById(R.id.PatientName);
             TestDateL = itemView.findViewById(R.id.TestDate);
             ResultDateL = itemView.findViewById(R.id.ResultDate);
+            ListHistory = itemView.findViewById(R.id.ListHistory);
+        }
     }
-}
-
 }

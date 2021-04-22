@@ -30,13 +30,13 @@ public class testresult {
 
     public testresult() {
     }
-    public testresult(String testresultID, String Result, String Status, String PatientName, String TestDate, String ResultDdate){
+    public testresult(String testresultID, String Result, String Status, String PatientName, String TestDate, String ResultDate){
         this.testresultID = testresultID;
         this.Result = Result;
         this.Status = Status;
         this.PatientName = PatientName;
         this.TestDate = TestDate;
-        this.ResultDate = ResultDdate;
+        this.ResultDate = ResultDate;
     }
     public String getTestresultID() { return testresultID; }
 

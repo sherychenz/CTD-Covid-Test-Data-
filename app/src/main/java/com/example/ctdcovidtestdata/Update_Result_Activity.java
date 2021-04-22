@@ -53,9 +53,9 @@ public class Update_Result_Activity extends AppCompatActivity {
         patientType = findViewById(R.id.getPtype1);
         patientName = findViewById(R.id.getPname1);
         patientSymptoms = findViewById(R.id.getPsymptoms1);
-        patientPhone = findViewById(R.id.getPphone);
+        patientPhone = findViewById(R.id.getPphone1);
         patientAddress = findViewById(R.id.getPaddress1);
-        patientTestDate = findViewById(R.id.getTestdate);
+        patientTestDate = findViewById(R.id.getTestdate1);
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/YYYY");
         String date = simpleDateFormat.format(Calendar.getInstance().getTime());
