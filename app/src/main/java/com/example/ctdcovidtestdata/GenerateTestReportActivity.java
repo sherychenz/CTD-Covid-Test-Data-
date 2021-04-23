@@ -1,6 +1,5 @@
 package com.example.ctdcovidtestdata;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -22,20 +21,22 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Patient_Result_Activity extends AppCompatActivity {
-    RecyclerView ListTest;
+public class GenerateTestReportActivity extends AppCompatActivity {
+    RecyclerView ListGenerate;
     RecyclerView.LayoutManager layoutManager;
     private ArrayList<testresult> testArray = new ArrayList<>();
     public String patientID = user.userID;
+    public String testCentreID = user.testCenterID;
 
     private String URL_SEARCH_ID = "https://ctd5758.000webhostapp.com/testdata.php";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_patient__result_);
-        ListTest = findViewById(R.id.ListTest);
+        setContentView(R.layout.activity_generate_test_report);
+        ListGenerate = findViewById(R.id.ListGenerate);
         layoutManager = new LinearLayoutManager(getApplicationContext());
-        ListTest.setLayoutManager(layoutManager);
+        ListGenerate.setLayoutManager(layoutManager);
         getData();
     }
 
@@ -50,7 +51,7 @@ public class Patient_Result_Activity extends AppCompatActivity {
                             JSONArray testarray = jsonObject.getJSONArray("testresult");
                             for (int i = 0; i < testarray.length(); i++) {
                                 JSONObject testresultobject = testarray.getJSONObject(i);
-                                if (testresultobject.getString("UserID").equals(patientID)){
+                                if (testresultobject.getString("TestCentreID").equals(testCentreID)){
                                     testArray.add(new testresult(testresultobject.getString("testresultID"),
                                             testresultobject.getString("Result"),
                                             testresultobject.getString("Status"),
@@ -60,7 +61,7 @@ public class Patient_Result_Activity extends AppCompatActivity {
                                 }
                             }
                             ListAdapter listAdapter = new ListAdapter(getApplicationContext(),testArray);
-                            ListTest.setAdapter(listAdapter);
+                            ListGenerate.setAdapter(listAdapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(), "Human Error", Toast.LENGTH_LONG).show();
@@ -75,9 +76,5 @@ public class Patient_Result_Activity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
     }
-    public void SignOut(View view) {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
-        finish();
-    }
+
 }

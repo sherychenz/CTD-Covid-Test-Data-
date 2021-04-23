@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
+    android:onClick="GenerateReport"
     tools:context=".TestCenterManagerMenuActivity">
 
     <LinearLayout
@@ -111,7 +112,8 @@
             android:layout_height="110dp"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
-            app:cardCornerRadius="25dp" >
+            android:onClick="GenerateReport"
+            app:cardCornerRadius="25dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -142,6 +144,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
+            android:onClick="SignOut"
             app:cardBackgroundColor="#FAF6F6"
             app:cardCornerRadius="25dp">
 

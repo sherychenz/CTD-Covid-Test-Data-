@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
+    android:onClick="GenerateReport"
     tools:context=".Tester_Menu_Activity">
 
     <LinearLayout
@@ -26,8 +27,8 @@
                 android:layout_height="82dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/logo"
-                android:contentDescription="TODO" />
+                android:contentDescription="TODO"
+                app:srcCompat="@drawable/logo" />
 
             <TextView
                 android:id="@+id/textView26"
@@ -115,6 +116,7 @@
             android:layout_height="110dp"
             android:layout_gravity="center"
             android:layout_marginBottom="15dp"
+            android:onClick="GenerateReport"
             app:cardCornerRadius="25dp">
 
             <LinearLayout
@@ -145,6 +147,7 @@
             android:layout_width="190dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
+            android:onClick="SignOut"
             app:cardBackgroundColor="#FAF6F6"
             app:cardCornerRadius="25dp">
 

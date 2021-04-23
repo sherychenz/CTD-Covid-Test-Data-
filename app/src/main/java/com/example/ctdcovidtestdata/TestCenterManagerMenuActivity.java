@@ -1,10 +1,10 @@
 package com.example.ctdcovidtestdata;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class TestCenterManagerMenuActivity extends AppCompatActivity {
 
@@ -24,5 +24,17 @@ public class TestCenterManagerMenuActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), ManageTestKitStockActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+    }
+
+    public void GenerateReport(View view) {
+        Intent intent = new Intent(getApplicationContext(), GenerateTestReportActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    public void SignOut(View view) {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
