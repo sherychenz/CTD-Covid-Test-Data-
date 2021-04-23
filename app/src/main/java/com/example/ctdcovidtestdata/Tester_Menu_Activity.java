@@ -26,4 +26,15 @@ public class Tester_Menu_Activity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void GenerateReport(View view) {
+        Intent intent = new Intent(getApplicationContext(), GenerateTestReportActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    public void SignOut(View view) {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
