@@ -40,7 +40,7 @@ public class  Record_Patient_Activity extends AppCompatActivity {
         PasswordText        = findViewById(R.id.PasswordText);
         spinner             = findViewById(R.id.spinner);
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("DD/MM/YYYY");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/YYYY");
         String date = simpleDateFormat.format(Calendar.getInstance().getTime());
         Testdate = date;
         System.out.println("----------------> Today"+ Testdate);

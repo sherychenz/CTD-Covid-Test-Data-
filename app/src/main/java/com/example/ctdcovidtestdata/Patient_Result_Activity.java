@@ -26,7 +26,7 @@ public class Patient_Result_Activity extends AppCompatActivity {
     RecyclerView ListTest;
     RecyclerView.LayoutManager layoutManager;
     private ArrayList<testresult> testArray = new ArrayList<>();
-    public static  String patientID;
+    public String patientID = user.userID;
 
     private String URL_SEARCH_ID = "https://ctd5758.000webhostapp.com/testdata.php";
     @Override
@@ -50,13 +50,14 @@ public class Patient_Result_Activity extends AppCompatActivity {
                             JSONArray testarray = jsonObject.getJSONArray("testresult");
                             for (int i = 0; i < testarray.length(); i++) {
                                 JSONObject testresultobject = testarray.getJSONObject(i);
-                                testArray.add(new testresult(testresultobject.getString("testresultID"),
-                                        testresultobject.getString("Result"),
-                                        testresultobject.getString("Status"),
-                                        testresultobject.getString("Name"),
-                                        testresultobject.getString("TestDate"),
-                                        testresultobject.getString("ResultDate")));
-                                patientID= testresultobject.getString("testresultID");
+                                if (testresultobject.getString("UserID").equals(patientID)){
+                                    testArray.add(new testresult(testresultobject.getString("testresultID"),
+                                            testresultobject.getString("Result"),
+                                            testresultobject.getString("Status"),
+                                            testresultobject.getString("Name"),
+                                            testresultobject.getString("TestDate"),
+                                            testresultobject.getString("ResultDate")));
+                                }
                             }
                             ListAdapter listAdapter = new ListAdapter(getApplicationContext(),testArray);
                             ListTest.setAdapter(listAdapter);
@@ -74,7 +75,6 @@ public class Patient_Result_Activity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
     }
-
     public void SignOut(View view) {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);

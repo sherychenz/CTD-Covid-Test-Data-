@@ -45,6 +45,7 @@ public class user {
     private Context context;
 
     public static String testCenterID;
+    public static String userID;
 
     public user(){
     }
@@ -118,6 +119,7 @@ public class user {
                                             if (object.get("Status").equals("x")){
                                                 Toast.makeText(context, "Wait until the admin approved", Toast.LENGTH_LONG).show();
                                             }else{
+                                                userID = object.getString("ID");
                                                 testCenterID = object.getString("TestCentreID");
                                                 System.out.println("test center id = " + testCenterID);
                                                 Intent intent = new Intent(context,TestCenterManagerMenuActivity.class);
@@ -126,6 +128,7 @@ public class user {
                                             }
                                         }
                                         else if (object.get("Position").equals("Tester")){
+                                            userID = object.getString("ID");
                                             testCenterID = object.getString("TestCentreID");
                                             System.out.println("test center id = " + testCenterID);
                                             Toast.makeText(context, "Login Success! Welcome", Toast.LENGTH_LONG).show();
@@ -134,6 +137,7 @@ public class user {
                                             context.startActivity(intent);
                                         }
                                         else if (object.get("Position").equals("Patient")){
+                                            userID = object.getString("ID");
                                             testCenterID = object.getString("TestCentreID");
                                             System.out.println("test center id = " + testCenterID);
                                             Toast.makeText(context, "Login Success! Welcome", Toast.LENGTH_LONG).show();
